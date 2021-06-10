@@ -1,0 +1,11 @@
+name: Publish Document
+title:
+username:
+account: rpubs
+server: rpubs.com
+hostUrl: rpubs.com
+appId: https://api.rpubs.com/api/v1/document/779698/65f1ba8e577446e8b71bca3345cedc8c
+bundleId: https://api.rpubs.com/api/v1/document/779698/65f1ba8e577446e8b71bca3345cedc8c
+url: http://rpubs.com/iceyes123/779698
+when: 1623287629.84866
+lastSyncTime: 1623287629.84866

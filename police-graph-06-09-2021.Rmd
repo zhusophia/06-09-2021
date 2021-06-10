@@ -1,0 +1,36 @@
+---
+title: "06-09-2021-Class"
+author: "Sophia Zhu"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+```{r, include = FALSE}
+x <- read_csv("https://raw.githubusercontent.com/Financial-Times/police-misconduct-complaints-analysis/main/output/philly_clean.csv") %>% 
+  select(officer_id, po_race, po_sex)
+```
+
+```{r, echo = FALSE}
+x %>% 
+  group_by(officer_id) %>%  
+  summarize(total = n()) %>% 
+  arrange(desc(total)) %>% 
+  mutate(officer_id = as.character(officer_id)) %>% 
+  mutate(comp_dec = ntile(total, 10)) %>% 
+  group_by(comp_dec) %>% 
+  summarize(total2 = sum(total)) %>% 
+  mutate(percentcomplain = (total2/sum(total2)*100)) %>% 
+  
+  
+  ggplot(mapping = aes(comp_dec, percentcomplain, fill = total2))+
+  geom_col()+
+  labs(title = "Amount of police complaints", subtitles = "Maybe police officers need some good donuts :'(", caption = "Financial Times", x = "Percentile of Police Officers", y = "Percentage of complaints", fill = "Amount of Complaints")
+  
+```
+
+
+
